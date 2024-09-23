@@ -37,52 +37,52 @@ import com.example.compose.ui.theme.ComposeTheme
 private val messages: List<MyMessage> = listOf(
     // cada mensaje tiene un titulo y un cuerpo
     MyMessage(
-        "Hola JetPack Compose 1",
-        "¿Preparado? Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed libero erat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. "
+        "Mensaje #1",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed libero erat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. "
     ),
     MyMessage(
-        "Hola JetPack Compose 2",
-        "¿Preparado? Vestibulum sit amet justo sit amet risus sagittal sodales id sed neque. Donec nec est ligula. Aenean mattis sodales tincidunt. Phasellus"
+        "Mensaje #2",
+        "Vestibulum sit amet justo sit amet risus sagittal sodales id sed neque. Donec nec est ligula. Aenean mattis sodales tincidunt. Phasellus"
     ),
     MyMessage(
-        "Hola JetPack Compose 3",
-        "¿Preparado? lectus orci, efficitur non porttitor eget, porta a odio. Quisque venenatis, mauris a ultrices fringilla, metus ipsum maximus sapien, eu"
+        "Mensaje #3",
+        "Lectus orci, efficitur non porttitor eget, porta a odio. Quisque venenatis, mauris a ultrices fringilla, metus ipsum maximus sapien, eu"
     ),
     MyMessage(
-        "Hola JetPack Compose 4",
-        "¿Preparado? ultricies sapien massa in lectus. Nullam quis pellentesque felis. Suspendisse viverra interdum aliquam."
+        "Mensaje #4",
+        "Ultricies sapien massa in lectus. Nullam quis pellentesque felis. Suspendisse viverra interdum aliquam."
     ),
     MyMessage(
-        "Hola JetPack Compose 5",
-        "¿Preparado? Phasellus mattis sem ut est ultrices volutpat. Donec ultricies nisi ut ipsum mollis aliquet. Fusce pellentesque sollicitudin risus, sit amet"
+        "Mensaje #5",
+        "Phasellus mattis sem ut est ultrices volutpat. Donec ultricies nisi ut ipsum mollis aliquet. Fusce pellentesque sollicitudin risus, sit amet"
     ),
     MyMessage(
-        "Hola JetPack Compose 6",
-        "¿Preparado? rhoncus eros malesuada id. Nunc et velit ipsum. Sed ac arcu rutrum, consequat nisi vel, rutrum turpis. Nulla malesuada arcu ac commodo"
+        "Mensaje #6",
+        "Rhoncus eros malesuada id. Nunc et velit ipsum. Sed ac arcu rutrum, consequat nisi vel, rutrum turpis. Nulla malesuada arcu ac commodo"
     ),
     MyMessage(
-        "Hola JetPack Compose 7",
-        "¿Preparado? porta. Praesent tortor dolor, volutpat sed lorem eu, porta vestibulum magna. Donec sit amet volutpat leo, sed sodales mauris. Donec nisl"
+        "Mensaje #7",
+        "Porta. Praesent tortor dolor, volutpat sed lorem eu, porta vestibulum magna. Donec sit amet volutpat leo, sed sodales mauris. Donec nisl"
     ),
     MyMessage(
-        "Hola JetPack Compose 8",
-        "¿Preparado? sapien, scelerisque ac velit sed, maximus imperdiet lacus. Nam faucibus augue ac est eleifend sollicitudin. Aliquam eget eros bibendum,"
+        "Mensaje #8",
+        "Sapien, scelerisque ac velit sed, maximus imperdiet lacus. Nam faucibus augue ac est eleifend sollicitudin. Aliquam eget eros bibendum,"
     ),
     MyMessage(
-        "Hola JetPack Compose 9",
-        "¿Preparado? varius sapien ut, ullamcorper erat. Vivamus nec ex urna. Vestibulum vel velit eget nulla finibus malesuada. Quisque eget pulvinar odio. Sed"
+        "Mensaje #9",
+        "Varius sapien ut, ullamcorper erat. Vivamus nec ex urna. Vestibulum vel velit eget nulla finibus malesuada. Quisque eget pulvinar odio. Sed"
     ),
     MyMessage(
-        "Hola JetPack Compose 10",
-        "¿Preparado? In eu orci in nulla pellentesque efficitur. Nullam ut orci in enim accumsan ornare. Praesent fringilla neque efficitur odio varius fermentum."
+        "Mensaje #10",
+        "In eu orci in nulla pellentesque efficitur. Nullam ut orci in enim accumsan ornare. Praesent fringilla neque efficitur odio varius fermentum."
     ),
     MyMessage(
-        "Hola JetPack Compose 11",
-        "¿Preparado? Morbi elementum in odio sed vestibulum. Suspendisse accumsan purus nec quam pulvinar dapibus. Morbi neque tortor, ullamcorper in"
+        "Mensaje #11",
+        "Morbi elementum in odio sed vestibulum. Suspendisse accumsan purus nec quam pulvinar dapibus. Morbi neque tortor, ullamcorper in"
     ),
     MyMessage(
-        "Hola JetPack Compose 12",
-        "¿Preparado? massa ac, egestas volutpat nunc. Nullam metus elit, consequat ac scelerisque eu, mattis id dui. Nam a iaculis nunc, non laoreet nisi."
+        "Mensaje #12",
+        "Massa ac, egestas volutpat nunc. Nullam metus elit, consequat ac scelerisque eu, mattis id dui. Nam a iaculis nunc, non laoreet nisi."
     )
 )
 
@@ -169,7 +169,7 @@ fun MyTexts(message: MyMessage) {
         Spacer(modifier = Modifier.height(16.dp))
         // se muestra el texto
         MyText(
-            message.body,
+            if (expanded) message.body else message.body.take(35) + "...",
             MaterialTheme.colorScheme.onBackground,
             MaterialTheme.typography.titleMedium,
             if (expanded) Int.MAX_VALUE else 1
