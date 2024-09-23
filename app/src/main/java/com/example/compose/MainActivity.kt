@@ -1,6 +1,5 @@
 package com.example.compose
 
-import android.content.res.Configuration
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -12,7 +11,9 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -82,11 +83,28 @@ fun MyText(text: String, color: Color, style: TextStyle) {
     Text(text, color = color, style = style)
 }
 
-@Preview()
-@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Preview(showSystemUi = true)
+//@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
 fun PreviewComponents() {
     ComposeTheme {
-        MyComponent()
+        val scrollState = rememberScrollState()
+        Column(modifier = Modifier.verticalScroll(scrollState)) {
+            MyComponent()
+            MyComponent()
+            MyComponent()
+            MyComponent()
+            MyComponent()
+            MyComponent()
+            MyComponent()
+            MyComponent()
+            MyComponent()
+            MyComponent()
+            MyComponent()
+            MyComponent()
+            MyComponent()
+            MyComponent()
+        }
     }
+
 }
