@@ -1,5 +1,6 @@
 package com.example.compose
 
+import android.content.res.Configuration
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -11,9 +12,9 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -26,26 +27,52 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.compose.ui.theme.ComposeTheme
 
+private val messages: List<MyMessage> = listOf(
+    MyMessage("Hola JetPack Compose 1", "¿Preparado?"),
+    MyMessage("Hola JetPack Compose 2", "¿Preparado?"),
+    MyMessage("Hola JetPack Compose 3", "¿Preparado?"),
+    MyMessage("Hola JetPack Compose 4", "¿Preparado?"),
+    MyMessage("Hola JetPack Compose 5", "¿Preparado?"),
+    MyMessage("Hola JetPack Compose 6", "¿Preparado?"),
+    MyMessage("Hola JetPack Compose 7", "¿Preparado?"),
+    MyMessage("Hola JetPack Compose 8", "¿Preparado?"),
+    MyMessage("Hola JetPack Compose 9", "¿Preparado?"),
+    MyMessage("Hola JetPack Compose 10", "¿Preparado?"),
+    MyMessage("Hola JetPack Compose 11", "¿Preparado?"),
+    MyMessage("Hola JetPack Compose 12", "¿Preparado?")
+)
+
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             ComposeTheme {
-                MyComponent()
+                MyMessages(messages)
             }
         }
     }
 }
 
+data class MyMessage(val title: String, val body: String)
+
 @Composable
-fun MyComponent() {
+fun MyMessages(messages: List<MyMessage>) {
+    LazyColumn {
+        items(messages) { message ->
+            MyComponent(message)
+        }
+    }
+}
+
+@Composable
+fun MyComponent(message: MyMessage) {
     Row(
         modifier = Modifier
             .background(MaterialTheme.colorScheme.background)
-            .padding(start = 8.dp)
+            .padding(8.dp)
     ) {
         MyImage()
-        MyTexts()
+        MyTexts(message)
     }
 }
 
@@ -62,16 +89,16 @@ fun MyImage() {
 }
 
 @Composable
-fun MyTexts() {
+fun MyTexts(messaage: MyMessage) {
     Column(modifier = Modifier.padding(start = 8.dp)) {
         MyText(
-            "¡Hola Jetpack Compose!",
+            messaage.title,
             MaterialTheme.colorScheme.onBackground,
             MaterialTheme.typography.titleLarge
         )
         Spacer(modifier = Modifier.height(16.dp))
         MyText(
-            "¿Preparado?",
+            messaage.body,
             MaterialTheme.colorScheme.onBackground,
             MaterialTheme.typography.titleMedium
         )
@@ -84,27 +111,10 @@ fun MyText(text: String, color: Color, style: TextStyle) {
 }
 
 @Preview(showSystemUi = true)
-//@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
 fun PreviewComponents() {
     ComposeTheme {
-        val scrollState = rememberScrollState()
-        Column(modifier = Modifier.verticalScroll(scrollState)) {
-            MyComponent()
-            MyComponent()
-            MyComponent()
-            MyComponent()
-            MyComponent()
-            MyComponent()
-            MyComponent()
-            MyComponent()
-            MyComponent()
-            MyComponent()
-            MyComponent()
-            MyComponent()
-            MyComponent()
-            MyComponent()
-        }
+        MyMessages(messages)
     }
-
 }
